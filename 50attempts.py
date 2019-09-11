@@ -68,7 +68,7 @@ for iiiiii in range(0,50):
         writer.writerows(sample)
     f.close()
     
-    #these prints were just for me to see where the program is
+    #prints used as checkpoints
     #checkpoint0
     print('sample ' + str(iiiiii))
     
@@ -88,8 +88,7 @@ for iiiiii in range(0,50):
     #checkpoint1
     print('results ' + str(iiiiii))
     
-    #the sample generated only has filenames, this part gets the CUI counts of only these files (cont.)
-    #from the total data file (NLP output data e.g. test_db_res.txt)
+    #the sample generated only has filenames, this part gets the CUI counts of only these files from the total data file (NLP output data e.g. test_db_res.txt)
     
     with open('/Users/christopherpan 1/Desktop/Topic Modeling Project/test_db_res.txt','r') as file1:
         data = file1.readlines()
@@ -115,7 +114,7 @@ for iiiiii in range(0,50):
             cuislol.append([line.split(':')[0],line.split(':')[1].replace('\n','')])
     theDictlist = []
 
-    #this part just makes a table with the counts for all the CUIs in each article
+    #Make a table with the counts for all the CUIs in each article
     with open(path + 'NLP_RESULTS.txt','r') as file2:
         data = file2.readlines()
         for line in data:
@@ -200,8 +199,8 @@ for iiiiii in range(0,50):
     y_tr = y_train.as_matrix()
     y_vl = y_valid.as_matrix()
     
-    #SGDClassifier allows use of both l1 and l2 penalty, in my earlier attempt (cont.)
-    #I used sklearn's LogisticRegression where I only used l1 penalty
+    #SGDClassifier allows use of both l1 and l2 penalty
+    #Earlier attempt used sklearn's LogisticRegression with only l1 penalty
     regr = linear_model.SGDClassifier(loss='log', penalty='elasticnet', alpha=.001, l1_ratio=0.15)
     regr.fit(X_tr,y_tr)
 
